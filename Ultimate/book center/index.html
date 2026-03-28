@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAK BOOK CENTER | Billing System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <nav class="sidebar no-print">
+            <div class="sidebar-header">
+                <i class="fas fa-book-open"></i>
+                <h2>PAK BOOK CENTER</h2>
+                <span>Baddomalhi</span>
+            </div>
+            <ul class="nav-links">
+                <li class="active"><i class="fas fa-file-invoice-dollar"></i> Billing</li>
+                <li><i class="fas fa-boxes-stacked"></i> Inventory</li>
+                <li><i class="fas fa-chart-line"></i> Sales Report</li>
+                <li><i class="fas fa-user-gear"></i> Settings</li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <div class="glass-card no-print">
+                <div class="input-grid">
+                    <input type="text" id="itemName" placeholder="Book Name">
+                    <input type="number" id="itemPrice" placeholder="Price (Rs)">
+                    <input type="number" id="itemDisc" placeholder="Discount (Rs)">
+                    <button class="btn-main" onclick="addItem()"><i class="fas fa-plus"></i> Add Item</button>
+                </div>
+            </div>
+
+            <div id="printableInvoice" class="invoice-box">
+                <div class="invoice-header">
+                    <h1>PAK BOOK CENTER BADDOMALHI</h1>
+                    <div class="badge">Bill / Payment Receipt</div>
+                    <div class="invoice-meta">
+                        <span>Date: <strong id="currentDate"></strong></span>
+                        <span>Invoice No: <strong>#PBC-101</strong></span>
+                    </div>
+                </div>
+
+                <div id="dynamicContainer">
+                    <table id="billTable">
+                        <thead>
+                            <tr>
+                                <th>Item Description</th>
+                                <th class="txt-right">Price</th>
+                                <th class="txt-right">Disc</th>
+                                <th class="txt-right">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody id="billBody">
+                            </tbody>
+                    </table>
+                </div>
+
+                <div class="invoice-footer">
+                    <div class="total-section">
+                        <p>Gross Amount: Rs. <span id="subTotal">0</span></p>
+                        <p>Total Discount: Rs. <span id="totalDisc">0</span></p>
+                        <div class="net-payable">
+                            <h2>Net Payable: Rs. <span id="totalAmount">0</span></h2>
+                        </div>
+                    </div>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone-volume"></i> <strong>Contact: 03456665604</strong></p>
+                        <p>Thank  You  </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-btns no-print">
+                <button class="btn-clear" onclick="clearBill()"><i class="fas fa-trash-can"></i> New Bill</button>
+                <button class="btn-pdf" onclick="downloadPDF()"><i class="fas fa-file-pdf"></i> Save as PDF</button>
+                <button class="btn-print" onclick="autoScaleAndPrint()"><i class="fas fa-print"></i> Print Invoice</button>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
